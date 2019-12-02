@@ -1,4 +1,5 @@
-// First attempt at writing my own code
+// Login & encrypt password from "https://www.youtube.com/watch?v=h7JPVvllfC8" tutorial
+// Attached files not made, video not fully finished
 #include <iostream>
 #include <fstream>
 
@@ -42,12 +43,12 @@ class login_manager
       }
     } 
     
-    string get_file(const char* file_name) 
+    string get_file(const char* p_file_name) 
     {
       string line;
       fstream file;
       
-      file.open(file_name, ios::in);
+      file.open(p_file_name, ios::in);
       if(file.is_open) 
       {
         getline(file, line);
@@ -56,6 +57,29 @@ class login_manager
       file.close();
       
       return string;
+    }
+    
+    void save_file(string p_line, const char* p_file_name)
+    {
+      fstream file;
+      file.open(p_file_name, ios::out);
+      
+      for(int i = 0; i < p_line.length(); i++)
+      {
+        file << encrypt(p_line[i]); << "\n";
+      }
+      
+      file << "0";
+      file.close();
+    }
+    
+    int encrypt(int p_letter) 
+    {
+      return p_letter + 3; 
+    }
+    int decrypt(p_letter)
+    {
+      return p_letter - 3;
     }
   
   private:
@@ -67,8 +91,8 @@ class login_manager
 
 int main()
 {
-  login_manager login_manager_obj;
+  login_mananger app;
+  app.save_file;
   
-  login_manager_obj.login()
-  
+  cin.get();
 }
