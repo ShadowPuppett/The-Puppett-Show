@@ -1,0 +1,74 @@
+// First attempt at writing my own code
+#include <iostream>
+#include <fstream>
+
+// Create account
+
+class login_manager
+{
+  public:    
+    login_manager()
+    {
+    
+      void login()
+      {
+        cout << "Enter Username: \n";
+        cin >> username_attempt;
+        
+        username = get_file("username.user");
+        
+        if(username_attempt == username)
+        {
+          cout << "Enter Password: \n";
+          cin << password_attempt;
+          
+          password = get_file("password.word");
+          
+          if(password_attempt == password)
+          {
+            // Login
+          }
+          else
+          {
+            cout << "Error: Password not recognised \n";
+          }
+        }
+        else
+        {
+          cout << "Error: Username not recognised \n";
+          
+          login();
+        }
+      }
+    } 
+    
+    string get_file(const char* file_name) 
+    {
+      string line;
+      fstream file;
+      
+      file.open(file_name, ios::in);
+      if(file.is_open) 
+      {
+        getline(file, line);
+      }
+      
+      file.close();
+      
+      return string;
+    }
+  
+  private:
+    string username;
+    string password;
+    string username_attempt;
+    string password_attempt;
+};
+
+int main()
+{
+  login_manager login_manager_obj;
+  
+  login_manager_obj.login()
+  
+}
